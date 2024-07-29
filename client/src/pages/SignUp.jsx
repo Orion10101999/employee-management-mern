@@ -29,7 +29,7 @@ export default function SignUp() {
         setError(true);
         return;
       }
-      navigate('/sign-in');
+      navigate('/log-in');
     } catch (error) {
       setLoading(false);
       setError(true);
@@ -41,8 +41,8 @@ export default function SignUp() {
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
         <input
           type='text'
-          placeholder='Username'
-          id='username'
+          placeholder='Name'
+          id='name'
           className='bg-slate-100 p-3 rounded-lg'
           onChange={handleChange}
         />

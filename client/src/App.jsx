@@ -1,15 +1,32 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import SignUp from './pages/SignUp'
-
+import Header from './components/Header';
+import Home from './pages/Home';
+import About from './pages/About';
+import LogIn from './pages/LogIn';
+import Profile from './pages/Profile';
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-    <SignUp/>
+    <BrowserRouter>
+      {/* header */}
+      <Header />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/log-in' element={<LogIn />} />
+        <Route path='/sign-up' element={<SignUp />} />
+          <Route path='/profile' element={<Profile />} />
+     
+      </Routes>
+    </BrowserRouter>
+    
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />

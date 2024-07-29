@@ -15,16 +15,11 @@ mongoDB()
   console.log(err);
 })
 
+import cors from 'cors'
+
 const app = express();
 
-const dirname = path.resolve();
-
-app.use(express.static(path.join(dirname, '/client/dist')));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(dirname, 'client', 'dist', 'index.html'));
-})
-
+app.use(cors());
 
 // Middleware
 
@@ -35,6 +30,17 @@ app.use(cookieParser());
 // Routes
 app.use('/api/employees', employeeRoutes);
 app.use('/api/auth', authRoutes);
+
+
+const dirname = path.resolve();
+
+app.use(express.static(path.join(dirname, '/client/dist')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(dirname, 'client', 'dist', 'index.html'));
+})  
+
+
 
 
 

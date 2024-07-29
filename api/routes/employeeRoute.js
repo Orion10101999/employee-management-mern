@@ -1,8 +1,7 @@
 
 import express from 'express'
 import Employee from '../models/employeeModel.js';
-import verifyToken from '../middlewares/authenticate.js';
-
+import verifyToken from '../middlewares/authenticate.js'
 const router = express.Router();
 
 router.use(verifyToken)
@@ -28,6 +27,7 @@ router.post('/', async (req, res) => {
 router.get('/', async (req, res) => {
   try {
     const employees = await Employee.find();
+    console.log(employees);
     res.json(employees);
   } catch (err) {
     res.status(500).json({ error: err.message });

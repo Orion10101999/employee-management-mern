@@ -1,11 +1,8 @@
-const express = require('express');
-const bcryptjs = require("bcryptjs")
-
-const jwt = require('jsonwebtoken');
-
+import bcryptjs from 'bcryptjs'
+import jwt from 'jsonwebtoken'
 // User model
-const User = require('../models/user.model.js');
-const errorHandler = require('../utils/error.js');
+import User from '../models/user.model.js'
+import errorHandler from '../utils/error.js';
 
 
 const Signup = async (req, res, next) => {
@@ -39,7 +36,7 @@ const Signup = async (req, res, next) => {
   }
 }
 
-const Login = async (req, res, next) => {
+const LogIn = async (req, res, next) => {
   try {
     const { email, password } = req.body;
     // Input validation
@@ -82,4 +79,4 @@ const LogOut = async (req, res, next) => {
     next(error);
   }
 };
-module.exports = { Login, Signup , LogOut };
+export {Signup ,LogIn ,LogOut}

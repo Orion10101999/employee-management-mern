@@ -1,8 +1,9 @@
-const express = require('express');
-const router = express.Router();
-const Employee = require('../models/employeeModel.js');
-const verifyToken = require('../middlewares/authenticate.js');
 
+import express from 'express'
+import Employee from '../models/employeeModel.js';
+import verifyToken from '../middlewares/authenticate.js';
+
+const router = express.Router();
 
 router.use(verifyToken)
 // Create a new employee
@@ -86,4 +87,4 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

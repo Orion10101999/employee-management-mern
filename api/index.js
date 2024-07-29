@@ -1,12 +1,11 @@
-const express = require('express');
-const cookieParser = require('cookie-parser')
-const dotenv = require('dotenv')
-dotenv.config()
-const path = require('path')
 
-const mongoDB = require('./config/db.js')
-const authRoutes = require('./routes/user.route.js');
-const employeeRoutes = require('./routes/employeeRoute.js');
+import express from 'express'
+import cookieParser from 'cookie-parser'
+import 'dotenv/config'
+import path from 'path'
+import mongoDB from './config/db.js'
+import authRoutes from './routes/user.route.js';
+import employeeRoutes from './routes/employeeRoute.js';
 
 mongoDB()
 .then(()=>{
@@ -17,12 +16,13 @@ mongoDB()
 })
 
 const app = express();
-const __dirname = path.resolve();
 
-app.use(express.static(path.join(__dirname, '/client/dist')));
+const dirname = path.resolve();
+
+app.use(express.static(path.join(dirname, '/client/dist')));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+  res.sendFile(path.join(dirname, 'client', 'dist', 'index.html'));
 })
 
 
@@ -30,9 +30,12 @@ app.get('*', (req, res) => {
 
 app.use(express.json({ extended: false }));
 app.use(cookieParser());
+
+
 // Routes
 app.use('/api/employees', employeeRoutes);
 app.use('/api/auth', authRoutes);
+
 
 
 app.use((err, req, res, next) => {

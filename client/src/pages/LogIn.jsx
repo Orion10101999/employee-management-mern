@@ -36,7 +36,7 @@ export default function LogIn() {
         return;
       }
       dispatch(signInSuccess(data));
-      navigate('/');
+      navigate('/employees');
     } catch (error) {
       dispatch(signInFailure(error));
     }
@@ -63,7 +63,7 @@ export default function LogIn() {
           disabled={loading}
           className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80'
         >
-          {loading ? 'Loading...' : 'Sign In'}
+          {loading ? 'Loading...' : 'Log In'}
         </button>
       </form>
       <div className='flex gap-2 mt-5'>
